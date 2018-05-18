@@ -1,4 +1,4 @@
-# Opening an image, showing an image, saving an image
+# Opening, showing, and saving an image
 
 import cv2
 import numpy as np
