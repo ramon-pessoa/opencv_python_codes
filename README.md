@@ -1,2 +1,2 @@
-# opencv_python_codes
+# opencv_python_programming
 Some programming examples in OpenCV python
