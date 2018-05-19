@@ -6,7 +6,7 @@ import numpy as np
 #cap = cv2.VideoCapture(0) # computer camera 0
 #cap = cv2.VideoCapture(1) # computer camera 1, and so on
 # cap = cv2.VideoCapture('diving.mp4')
-cap = cv2.VideoCapture('diving2.avi')
+cap = cv2.VideoCapture('diving.mp4')
 
 count = 0
 while True:
