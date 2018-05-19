@@ -1,4 +1,4 @@
-# 
+# Opening, playing, saving a video
 
 import cv2
 import numpy as np
