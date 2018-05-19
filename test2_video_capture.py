@@ -15,7 +15,9 @@ out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
 while True:
 	ret, frame = cap.read() # ret = True or False, frame = video frame
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-	# out.write(frame)
+
+	out.write(frame)
+	
 	cv2.imshow('frame', frame)
 	cv2.imshow('gray', gray)
 
