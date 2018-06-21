@@ -15,7 +15,7 @@ hog.setSVMDetector(cv2.HOGDescriptor_getDefaultPeopleDetector())
 
 # cap = cv2.VideoCapture(0) # computer camera 0
 #cap = cv2.VideoCapture(1) # computer camera 1, and so on
-cap = cv2.VideoCapture('diving.avi')
+cap = cv2.VideoCapture('diving.mp4')
 
 # Define the codec and create VideoWriter object
 #fourcc = cv2.VideoWriter_fourcc(*'XVID')
