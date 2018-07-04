@@ -11,16 +11,18 @@ import cv2
 
 #####################################################################
 # Settings
-save_video = False
+save_video = True
 # Note: To save videos (video_width, video_height) must be exacly the same in the video -> cv2.VideoWriter(output_video_path_and_name,fourcc, fps, (video_width, video_height))
 video_width = 400
-video_height = 608
+video_height = 711
 fps = 20.0 # fps = frames per second
 #FourCC code is passed as cv2.VideoWriter_fourcc('M','J','P','G') or cv2.VideoWriter_fourcc(*'MJPG') for MJPG.
 fourcc_format = 'XVID' # 'XVID', 'MJPG', 'MP4V', cv.CV_FOURCC('P','I','M','1') #is a MPEG-1 codec
 show_frame_size = True
 use_original_frame_size = False
 use_web_cam = False
+rotate_image = True
+rotation_angule = 90
 input_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_diving_videos/olympic_stadium_montreal_smartphone/'
 output_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_human_detection/olympic_stadium_montreal_smartphone/'
 input_video_name = '20'
@@ -51,6 +53,9 @@ if save_video:
 # count = 0
 while cap.isOpened():
 	ret, frame = cap.read() # ret = True or False, frame = video frame
+
+	if rotate_image:
+		frame = imutils.rotate_bound(frame, rotation_angule)
 
 	if use_original_frame_size:
 		# Original image
