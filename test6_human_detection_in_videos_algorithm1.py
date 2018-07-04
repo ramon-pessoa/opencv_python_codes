@@ -11,23 +11,21 @@ import cv2
 
 #####################################################################
 # Settings
-save_video = True
+save_video = False
 # Note: To save videos (video_width, video_height) must be exacly the same in the video -> cv2.VideoWriter(output_video_path_and_name,fourcc, fps, (video_width, video_height))
 video_width = 400
-video_height = 225
+video_height = 608
 fps = 20.0 # fps = frames per second
 #FourCC code is passed as cv2.VideoWriter_fourcc('M','J','P','G') or cv2.VideoWriter_fourcc(*'MJPG') for MJPG.
-fourcc_format = 'XVID' # 'XVID', 'MJPG', 'MP4V'
+fourcc_format = 'XVID' # 'XVID', 'MJPG', 'MP4V', cv.CV_FOURCC('P','I','M','1') #is a MPEG-1 codec
 show_frame_size = True
 use_original_frame_size = False
 use_web_cam = False
-input_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_diving_videos/insq/diving_2_cameras_side_by_side/'
-output_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_human_detection/insq/diving_2_cameras_side_by_side/'
-# input_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_diving_videos/diving_videos_from_youtube/'
-# output_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_human_detection/diving_videos_from_youtube/'
-input_video_name = '1'
-output_video_name = input_video_name + '_225x400'
-input_video_extension = '.mp4'
+input_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_diving_videos/olympic_stadium_montreal_smartphone/'
+output_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_human_detection/olympic_stadium_montreal_smartphone/'
+input_video_name = '20'
+output_video_name = input_video_name + '_' + str(video_height) + 'x' + str(video_width)
+input_video_extension = '.mov'
 output_video_extension = '.avi'
 # full path
 input_video_path_and_name = input_video_full_path + input_video_name + input_video_extension
@@ -42,6 +40,7 @@ if use_web_cam:
 	cap = cv2.VideoCapture(0) # computer camera 0
 	#cap = cv2.VideoCapture(1) # computer camera 1, and so on
 else:
+	print("Path:", input_video_path_and_name)
 	cap = cv2.VideoCapture(input_video_path_and_name)
 
 # Define the codec and create VideoWriter object
@@ -50,7 +49,7 @@ if save_video:
 	out = cv2.VideoWriter(output_video_path_and_name,fourcc, fps, (video_width, video_height))
 
 # count = 0
-while True:
+while cap.isOpened():
 	ret, frame = cap.read() # ret = True or False, frame = video frame
 
 	if use_original_frame_size:
