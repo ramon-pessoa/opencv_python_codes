@@ -1,4 +1,4 @@
-# Opening, playing, detectin human, saving a video
+# Opening, playing, saving video. Human Detection.
 
 # import the necessary packages
 from __future__ import print_function
@@ -13,7 +13,7 @@ import sys
 
 #####################################################################
 # Settings
-save_video = True
+save_video = False
 # Note: To save videos (video_width, video_height) must be exacly the same in the video -> cv2.VideoWriter(output_video_path_and_name,fourcc, fps, (video_width, video_height))
 video_width = 400
 video_height = 711
@@ -23,18 +23,17 @@ fourcc_format = 'XVID' # 'XVID', 'MJPG', 'MP4V', cv.CV_FOURCC('P','I','M','1') #
 show_frame_size = True
 use_original_frame_size = False
 use_web_cam = False
-rotate_image = True
+rotate_image = False
 rotation_angule = 90
-input_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_diving_videos/olympic_stadium_montreal_smartphone/'
-output_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_human_detection/olympic_stadium_montreal_smartphone/'
-input_video_name = '25'
+input_video_full_path = ''
+output_video_full_path = ''
+input_video_name = 'diving'
 output_video_name = input_video_name + '_' + str(video_height) + 'x' + str(video_width)
-input_video_extension = '.mov'
+input_video_extension = '.mp4'
 output_video_extension = '.mpeg'
 # full path
 input_video_path_and_name = input_video_full_path + input_video_name + input_video_extension
 output_video_path_and_name = output_video_full_path + output_video_name + output_video_extension
-test = True
 #####################################################################
 
 # initialize the HOG descriptor/person detector
