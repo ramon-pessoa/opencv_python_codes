@@ -11,7 +11,7 @@ import cv2
 
 #####################################################################
 # Settings
-save_video = False
+save_video = True
 # Note: To save videos (video_width, video_height) must be exacly the same in the video -> cv2.VideoWriter(output_video_path_and_name,fourcc, fps, (video_width, video_height))
 video_width = 400
 video_height = 225
@@ -21,8 +21,17 @@ fourcc_format = 'XVID' # 'XVID', 'MJPG', 'MP4V'
 show_frame_size = True
 use_original_frame_size = False
 use_web_cam = False
-input_video_path_and_name = 'diving.mp4'
-output_video_path_and_name = 'output.avi'
+input_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_diving_videos/insq/diving_2_cameras_side_by_side/'
+output_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_human_detection/insq/diving_2_cameras_side_by_side/'
+# input_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_diving_videos/diving_videos_from_youtube/'
+# output_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_human_detection/diving_videos_from_youtube/'
+input_video_name = '1'
+output_video_name = input_video_name + '_225x400'
+input_video_extension = '.mp4'
+output_video_extension = '.avi'
+# full path
+input_video_path_and_name = input_video_full_path + input_video_name + input_video_extension
+output_video_path_and_name = output_video_full_path + output_video_name + output_video_extension
 #####################################################################
 
 # initialize the HOG descriptor/person detector
@@ -37,7 +46,7 @@ else:
 
 # Define the codec and create VideoWriter object
 if save_video:
-	fourcc = cv2.VideoWriter_fourcc(*FourCC_format)
+	fourcc = cv2.VideoWriter_fourcc(*fourcc_format)
 	out = cv2.VideoWriter(output_video_path_and_name,fourcc, fps, (video_width, video_height))
 
 # count = 0
