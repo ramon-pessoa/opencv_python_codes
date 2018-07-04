@@ -19,7 +19,7 @@ fps = 20.0 # fps = frames per second
 #FourCC code is passed as cv2.VideoWriter_fourcc('M','J','P','G') or cv2.VideoWriter_fourcc(*'MJPG') for MJPG.
 fourcc_format = 'XVID' # 'XVID', 'MJPG', 'MP4V'
 show_frame_size = True
-use_original_frame_size = True
+use_original_frame_size = False
 use_web_cam = False
 input_video_path_and_name = 'diving.mp4'
 output_video_path_and_name = 'output.avi'
