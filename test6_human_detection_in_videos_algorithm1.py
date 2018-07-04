@@ -8,6 +8,8 @@ import numpy as np
 import argparse
 import imutils
 import cv2
+import os
+import sys
 
 #####################################################################
 # Settings
@@ -25,13 +27,14 @@ rotate_image = True
 rotation_angule = 90
 input_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_diving_videos/olympic_stadium_montreal_smartphone/'
 output_video_full_path = '/Users/ramonpessoa/google_drive/phd/database_human_detection/olympic_stadium_montreal_smartphone/'
-input_video_name = '20'
+input_video_name = '25'
 output_video_name = input_video_name + '_' + str(video_height) + 'x' + str(video_width)
 input_video_extension = '.mov'
-output_video_extension = '.avi'
+output_video_extension = '.mpeg'
 # full path
 input_video_path_and_name = input_video_full_path + input_video_name + input_video_extension
 output_video_path_and_name = output_video_full_path + output_video_name + output_video_extension
+test = True
 #####################################################################
 
 # initialize the HOG descriptor/person detector
@@ -42,11 +45,22 @@ if use_web_cam:
 	cap = cv2.VideoCapture(0) # computer camera 0
 	#cap = cv2.VideoCapture(1) # computer camera 1, and so on
 else:
-	print("Path:", input_video_path_and_name)
+	print("Input file:", input_video_path_and_name)
 	cap = cv2.VideoCapture(input_video_path_and_name)
 
 # Define the codec and create VideoWriter object
 if save_video:
+	# if file exits, remove file
+	try:
+		if os.path.isfile(output_video_path_and_name):
+			print("Output file: ", output_video_path_and_name)
+			os.unlink(output_video_path_and_name)
+		else:
+			print("Error: %s file not found." % output_video_path_and_name)
+	except OSError:
+		print("Error: %s - %s." % (e.filename, e.strerror))
+
+	# video output configuration
 	fourcc = cv2.VideoWriter_fourcc(*fourcc_format)
 	out = cv2.VideoWriter(output_video_path_and_name,fourcc, fps, (video_width, video_height))
 
@@ -105,3 +119,5 @@ cap.release()
 if save_video:
 	out.release()
 cv2.destroyAllWindows()
+
+sys.exit(0)
